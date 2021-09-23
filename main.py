@@ -39,16 +39,16 @@ def get_commands(message):
 
 @client.callback_query_handler(func=lambda call: True)
 def answer(call):
-    # if call.data == "sp500":
-    #     driver = webdriver.Chrome()
-    #     driver.get(path)
-    #     a = driver.find_element_by_xpath(
-    #         '/html/body/div[2]/div/div[3]/div/div[1]/div/div[1]/canvas[2]').screenshot_as_png
-    #     driver.close()
-    #     # resp = req.get(path)
-    #     # soup = BeautifulSoup(resp.text, 'lxml')
-    #     # a = soup.find_all("canvas", class_="hover-canvas")
-    #     client.send_photo(call.message.chat.id, a)
+    if call.data == "sp500":
+        driver = webdriver.Chrome()
+        driver.get(path)
+        a = driver.find_element_by_xpath(
+            '/html/body/div[2]/div/div[3]/div/div[1]/div/div[1]/canvas[2]').screenshot_as_png
+        driver.close()
+        # resp = req.get(path)
+        # soup = BeautifulSoup(resp.text, 'lxml')
+        # a = soup.find_all("canvas", class_="hover-canvas")
+        client.send_photo(call.message.chat.id, a)
 
     if call.data == "activinvest":
         resp = req.get("https://finance.yahoo.com/most-active")
@@ -63,31 +63,4 @@ def answer(call):
 client.polling()
 
 
-# class MainWindow(QtWidgets.QMainWindow, Ui_Form):
-#
-#     def __init__(self):
-#         super().__init__()
-#         self.setupUi(self)
-#         self.show()
-#         self.Button_sp500.clicked.connect(self.sp500)
-#
-#     def sp500(self):
-#         client.send_message(f'@{self.linetgnik.text()}', "Привет")
-#         print(f'@{self.linetgnik.text()}')
-#
-#     @client.message_handler(commands=['sms'])
-#     def mailing(self, message):
-#         if message.text == '/sms':
-#             client.send_message(message.chat.id, "Привет")
-#
-#
-# def main():
-#     app = QtWidgets.QApplication(sys.argv)
-#     window = MainWindow()
-#     window.show()
-#     app.exec_()
-#
-#
-# if __name__ == '__main__':
-#     main()
-#     # exception_hook()
+
