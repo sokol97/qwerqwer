@@ -23,7 +23,8 @@ client = telebot.TeleBot(BOT_TOKEN)
 
 path = "https://finviz.com/map.ashx?t=sec"
 
-
+def asd():
+    pass
 
 @client.message_handler(commands=['start'])
 def get_commands(message):
